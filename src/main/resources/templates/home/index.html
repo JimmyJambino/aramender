@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="myStyleSheet.css">
 </head>
 <body>
 
@@ -18,14 +19,36 @@
 
 </table>
 
+<div>
+    <p>Mode</p>
+    <p id="mode"></p>
+</div>
+
+<div class="container">
+    <span>Check if this player is an aram ender</span>
+    <<div><input id="f-name" placeholder="firstName" /></div>
+    <br />
+    <div><input id="l-name" placeholder="lastName"></div>
+    <button id="btn-save">Save</button>
+</div>
 <script src="options.js"></script>
 <script src="summonerInfo.js"></script>
+<script src="matchInfo.js"></script>
 <script>
+    document.getElementById("btn-save").onclick = (evt)=> {
+        evt.preventDefault()
+
+    }
     console.log("Sup")
     const apiKey = "RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88"
     const riotURL ="https://euw1.api.riotgames.com/"
     const matchURL = "https://europe.api.riotgames.com/lol/match/v5/matches/EUW1_5522249350?api_key=RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88"
     //sessionStorage.setItem("SERVER_URL","https://euw1.api.riotgames.com/");
-    fetchSummoner(riotURL+"lol/summoner/v4/summoners/by-name/Rimfy?api_key="+apiKey)</script>
+    //fetchSummoner(riotURL+"lol/summoner/v4/summoners/by-name/Rimfy?api_key="+apiKey)
+    //fetchMatch("https://europe.api.riotgames.com/lol/match/v5/matches/EUW1_5522249350?api_key=RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88")
+    let count = 10;
+    let user = "SwLJX3PqTaWDMy_aETpmtqVQ2nmPbzZEu6CSWWeziSdQiiAV3LQDnd8x68ZNWlzx53LQVxQ91Z_jPA"
+    //fetchOnePlayerMatches("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/"+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user)
+</script>
 </body>
 </html>

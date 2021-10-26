@@ -12,3 +12,5 @@ function makeOptions(method, body) {
     return options;
 }
 
+
+// This is unnecessary for only getters?
