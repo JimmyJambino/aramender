@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Level</th>
+    </tr>
+    </thead>
+    <tbody id="tbody1">
+    </tbody>
+
+</table>
+
+<script src="options.js"></script>
+<script src="summonerInfo.js"></script>
+<script>
+    console.log("Sup")
+    const apiKey = "RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88"
+    const riotURL ="https://euw1.api.riotgames.com/"
+    const matchURL = "https://europe.api.riotgames.com/lol/match/v5/matches/EUW1_5522249350?api_key=RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88"
+    //sessionStorage.setItem("SERVER_URL","https://euw1.api.riotgames.com/");
+    fetchSummoner(riotURL+"lol/summoner/v4/summoners/by-name/Rimfy?api_key="+apiKey)</script>
+</body>
+</html>
