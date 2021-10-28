@@ -5,32 +5,20 @@
     <title>Title</title>
     <link rel="stylesheet" href="myStyleSheet.css">
 </head>
-<body>
+<body class="container">
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Level</th>
-    </tr>
-    </thead>
-    <tbody id="tbody1">
-    </tbody>
-
-</table>
+<h1>
+    ARAM ENDERS DOT COM
+</h1>
 
 <div>
-    <p>Mode</p>
-    <p id="mode"></p>
+    <button id="btn-rimfy"></button>
+</div>
+<div id="divBody">
+    <!-- contains info about the summoner and cringe level
+    "In the last 5 games, this summoner has participated in ending arams X times.-->
 </div>
 
-<div class="container">
-    <span>Check if this player is an aram ender</span>
-    <<div><input id="f-name" placeholder="firstName" /></div>
-    <br />
-    <div><input id="l-name" placeholder="lastName"></div>
-    <button id="btn-save">Save</button>
-</div>
 <script src="options.js"></script>
 <script src="summonerInfo.js"></script>
 <script src="matchInfo.js"></script>
@@ -39,16 +27,26 @@
         evt.preventDefault()
 
     }
-    console.log("Sup")
-    const apiKey = "RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88"
+    document.getElementById("btn-rimfy").onclick = (evt) => {
+        evt.preventDefault()
+        let user = "SwLJX3PqTaWDMy_aETpmtqVQ2nmPbzZEu6CSWWeziSdQiiAV3LQDnd8x68ZNWlzx53LQVxQ91Z_jPA";
+        fetchOnePlayerMatches("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/"+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user)
+    }
+    const count = 5;
+    const users = []
+    // EmporerGunz : tuVU3fSYF0SuHd86SMqS-m_P1EM8fDrxX4oIfZMpth57thGuKWYS8rd09qwys-nrfWW0ehMHoWYv6g
+    // Rimfy : SwLJX3PqTaWDMy_aETpmtqVQ2nmPbzZEu6CSWWeziSdQiiAV3LQDnd8x68ZNWlzx53LQVxQ91Z_jPA
+    // MrAlekDk : D7YMucXDRYXfEf0b9bU-j8WHfCpcwJzWVoR5ZF7e5wSXIQZJA7-UWVgFAtpMjyfnDKCzgVu_CLJwvQ
+    //
+    const apiKey = "RGAPI-ce3d0077-253d-4057-8ac1-c4e1c3e3bf5e"
     const riotURL ="https://euw1.api.riotgames.com/"
     const matchURL = "https://europe.api.riotgames.com/lol/match/v5/matches/EUW1_5522249350?api_key=RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88"
     //sessionStorage.setItem("SERVER_URL","https://euw1.api.riotgames.com/");
     //fetchSummoner(riotURL+"lol/summoner/v4/summoners/by-name/Rimfy?api_key="+apiKey)
     //fetchMatch("https://europe.api.riotgames.com/lol/match/v5/matches/EUW1_5522249350?api_key=RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88")
-    let count = 10;
-    let user = "SwLJX3PqTaWDMy_aETpmtqVQ2nmPbzZEu6CSWWeziSdQiiAV3LQDnd8x68ZNWlzx53LQVxQ91Z_jPA"
-    //fetchOnePlayerMatches("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/"+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user)
+    //let count = 10;
+    //let user = "SwLJX3PqTaWDMy_aETpmtqVQ2nmPbzZEu6CSWWeziSdQiiAV3LQDnd8x68ZNWlzx53LQVxQ91Z_jPA"
+
 </script>
 </body>
 </html>

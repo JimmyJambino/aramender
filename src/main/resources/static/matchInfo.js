@@ -1,34 +1,37 @@
 function fetchMatch(URL, playerId) {
+    //let aramEnderCount = 0; // need to be moved outside this scope
     fetch(URL)
         .then(res => res.json())
         .then(match => {
-            const players = match.metadata.participants
             //const player = match.metadata.participants.filter(p => p == "tuVU3fSYF0SuHd86SMqS-m_P1EM8fDrxX4oIfZMpth57thGuKWYS8rd09qwys-nrfWW0ehMHoWYv6g")
             const ender = match.info.participants.filter(p => p.nexusKills == 1 || p.nexusTakedowns == 1)
-            for(let i = 0; i < match.metadata.participants.length; i++) {
-                if(players[i] == "tuVU3fSYF0SuHd86SMqS-m_P1EM8fDrxX4oIfZMpth57thGuKWYS8rd09qwys-nrfWW0ehMHoWYv6g") { // checks for michael
-                    console.log("Player number: " + i)
-                }
-            }
+
             for(let i = 0; i < ender.length; i++) {
-                //console.log(ender[i].championName)
-                //console.log(ender[i].puuid)
                 console.log("index:" + i)
                 if(ender[i].puuid == playerId) {
-                    console.log("FILTHY ARAM ENDER")
+                    return 1;
                 }
             }
-            //console.log("Enders: " + JSON.stringify(ender))
-            document.getElementById("mode").innerHTML = `${match.info.gameMode}`})
+            return 0;
+            })
+    // Check for number of aramEnds and display number accordingly in html with different images?
+
 }
 
-function fetchOnePlayerMatches(URL, playerId) {
+function displayResults(playerName, count) {
+    let body = document.getElementById("divBody").innerHTML;
+    
+}
+
+function fetchOnePlayerMatches(URL, playerId, playerName) {
     fetch(URL)
         .then(res => res.json())
         .then(matches => {
+            let counter = 0;
             for(let i = 0; i < matches.length; i++) {
-                fetchMatch("https://europe.api.riotgames.com/lol/match/v5/matches/"+matches[i]+"?api_key=RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88", playerId)
+                counter += fetchMatch("https://europe.api.riotgames.com/lol/match/v5/matches/"+matches[i]+"?api_key=RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88", playerId)
             }
+            displayResults(playerName, counter);
         })
 }
 
