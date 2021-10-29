@@ -1,25 +1,33 @@
+let counter = 0;
+
 function fetchMatch(URL, playerId) {
-    //let aramEnderCount = 0; // need to be moved outside this scope
     fetch(URL)
         .then(res => res.json())
         .then(match => {
             //const player = match.metadata.participants.filter(p => p == "tuVU3fSYF0SuHd86SMqS-m_P1EM8fDrxX4oIfZMpth57thGuKWYS8rd09qwys-nrfWW0ehMHoWYv6g")
             const ender = match.info.participants.filter(p => p.nexusKills == 1 || p.nexusTakedowns == 1)
-
             for(let i = 0; i < ender.length; i++) {
-                console.log("index:" + i)
                 if(ender[i].puuid == playerId) {
-                    return 1;
+                    counter++
+                    console.log("counting")
                 }
             }
-            return 0;
-            })
-    // Check for number of aramEnds and display number accordingly in html with different images?
+        })
 
 }
 
 function displayResults(playerName, count) {
-    let body = document.getElementById("divBody").innerHTML;
+    let case0 = "<h1>PHEW</h1> <span>"+playerName+" has not ended any recent arams. They are cool as a breeze.</span>  <span>Imagine tho?</span>"
+    let case1 = "<h1>CRINGE ALERT!</h1> <h1>ARAM ENDER SPOTTED!</h1><span>"+playerName+" has ended " + count + " recent aram games</span>"
+    if(count > 0) {
+        document.getElementById("divBody").innerHTML = case1;
+        document.getElementById("backgroundBody").style.backgroundImage = "url('large.jpg')";
+    } else {
+        document.getElementById("backgroundBody").style.backgroundImage = "url('pepepog.jpg')";
+        document.getElementById("divBody").innerHTML = case0;
+    }
+    console.log("Summoner: " + playerName + " cringe: " + count)
+    counter = 0;
     
 }
 
@@ -27,12 +35,16 @@ function fetchOnePlayerMatches(URL, playerId, playerName) {
     fetch(URL)
         .then(res => res.json())
         .then(matches => {
-            let counter = 0;
             for(let i = 0; i < matches.length; i++) {
-                counter += fetchMatch("https://europe.api.riotgames.com/lol/match/v5/matches/"+matches[i]+"?api_key=RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88", playerId)
+                fetchMatch("https://europe.api.riotgames.com/lol/match/v5/matches/"+matches[i]+"?api_key=RGAPI-ce3d0077-253d-4057-8ac1-c4e1c3e3bf5e", playerId)
             }
-            displayResults(playerName, counter);
-        })
+        }).then(()=> {
+            console.log("displaying")
+        setTimeout(() =>{
+            displayResults(playerName, counter)
+        }, 500)
+
+    })
 }
 
 function addMatchToDB(URL) {

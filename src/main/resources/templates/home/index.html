@@ -5,39 +5,74 @@
     <title>Title</title>
     <link rel="stylesheet" href="myStyleSheet.css">
 </head>
-<body class="container">
+<body class="container" id="backgroundBody">
 
-<h1>
-    ARAM ENDERS DOT COM
-</h1>
+    <h1 style="background-color: white">
+        ARAM ENDERS DOT COM
+    </h1>
 
-<div>
-    <button id="btn-rimfy"></button>
-</div>
-<div id="divBody">
-    <!-- contains info about the summoner and cringe level
-    "In the last 5 games, this summoner has participated in ending arams X times.-->
-</div>
+    <div style="background-color: white">
+        <button id="btn-rimfy">Rimfy</button>
+        <button id="btn-gunz">EmporerGunz</button>
+        <button id="btn-alek">MrAlekDk</button>
+        <button id="btn-quaked">Quaked</button>
+        <button id="btn-troels">TroelsLothar</button>
+        <button id="btn-muldyr">rare muldyr</button>
+        <button id="btn-grill">Sespågrillen</button>
+        <button id="btn-kekpaw">Kekpaw</button>
+    </div>
+
+    <div id="divBody" class="container" style="background-color: white">
+        <!-- contains info about the summoner and cringe level
+        "In the last 5 games, this summoner has participated in ending arams X times.-->
+    </div>
 
 <script src="options.js"></script>
 <script src="summonerInfo.js"></script>
 <script src="matchInfo.js"></script>
 <script>
-    document.getElementById("btn-save").onclick = (evt)=> {
-        evt.preventDefault()
-
-    }
     document.getElementById("btn-rimfy").onclick = (evt) => {
         evt.preventDefault()
         let user = "SwLJX3PqTaWDMy_aETpmtqVQ2nmPbzZEu6CSWWeziSdQiiAV3LQDnd8x68ZNWlzx53LQVxQ91Z_jPA";
-        fetchOnePlayerMatches("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/"+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user)
+        fetchOnePlayerMatches(urlByPuuid+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user, "Rimfy")
     }
+    document.getElementById("btn-gunz").onclick = (evt) => {
+        evt.preventDefault()
+        let user = "tuVU3fSYF0SuHd86SMqS-m_P1EM8fDrxX4oIfZMpth57thGuKWYS8rd09qwys-nrfWW0ehMHoWYv6g";
+        fetchOnePlayerMatches(urlByPuuid+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user, "EmporerGunz")
+    }
+    document.getElementById("btn-alek").onclick = (evt) => {
+        evt.preventDefault()
+        let user = "D7YMucXDRYXfEf0b9bU-j8WHfCpcwJzWVoR5ZF7e5wSXIQZJA7-UWVgFAtpMjyfnDKCzgVu_CLJwvQ";
+        fetchOnePlayerMatches(urlByPuuid+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user, "MrAlekDk")
+    }
+    document.getElementById("btn-quaked").onclick = (evt) => {
+        evt.preventDefault()
+        let user = "1mlLf4k44szmZ0zKx2PL7FcSEsVHq1vZF6Ia2mkBVWwsDREN17RKuWsQuq0d4UWywsXYgcOG4xSk9g";
+        fetchOnePlayerMatches(urlByPuuid+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user, "Quaked")
+    }
+    document.getElementById("btn-troels").onclick = (evt) => {
+        evt.preventDefault()
+        let user = "72lvoYRS_4XjLiHPt-J1UJJs9KcRWu5-sbfWFJA-ig7W0xzqvqb8--nBJOSYOvqvUgeL-8IIdRjycg";
+        fetchOnePlayerMatches(urlByPuuid+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user, "TroelsLothar")
+    }
+    document.getElementById("btn-muldyr").onclick = (evt) => {
+        evt.preventDefault()
+        let user = "ugxXCmtjVyfDtVTVhOy3aeTwFI5y7G-7IiHoM2pCnSVUiq76fvHuSu9SYlaauOpzgkpp7cgcJhIE5g";
+        fetchOnePlayerMatches(urlByPuuid+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user, "rare muldyr")
+    }
+    document.getElementById("btn-grill").onclick = (evt) => {
+        evt.preventDefault()
+        let user = "WEsHqzBGdzz2_31FKjdKiiS4VuT1DJahCaMpviaUhUTugxg_gddp3YE9slK_UUnB6MDMJ_qpzlSGMQ";
+        fetchOnePlayerMatches(urlByPuuid+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user, "Sespågrillen")
+    }
+    document.getElementById("btn-kekpaw").onclick = (evt) => {
+        evt.preventDefault()
+        let user = "gj_5bLk4MFiRSf_z2ir9rGGc9DmlirirYPSYz1zQVH9p1ZgDp_FbliOhr4RgQg9yMHQ_vIW46HVefg";
+        fetchOnePlayerMatches(urlByPuuid+user+"/ids?type=normal&start=0&count="+count+"&api_key="+apiKey, user, "Kekpaw")
+    }
+    const urlByPuuid = "https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/"
     const count = 5;
-    const users = []
-    // EmporerGunz : tuVU3fSYF0SuHd86SMqS-m_P1EM8fDrxX4oIfZMpth57thGuKWYS8rd09qwys-nrfWW0ehMHoWYv6g
-    // Rimfy : SwLJX3PqTaWDMy_aETpmtqVQ2nmPbzZEu6CSWWeziSdQiiAV3LQDnd8x68ZNWlzx53LQVxQ91Z_jPA
-    // MrAlekDk : D7YMucXDRYXfEf0b9bU-j8WHfCpcwJzWVoR5ZF7e5wSXIQZJA7-UWVgFAtpMjyfnDKCzgVu_CLJwvQ
-    //
     const apiKey = "RGAPI-ce3d0077-253d-4057-8ac1-c4e1c3e3bf5e"
     const riotURL ="https://euw1.api.riotgames.com/"
     const matchURL = "https://europe.api.riotgames.com/lol/match/v5/matches/EUW1_5522249350?api_key=RGAPI-1d43a225-d9fc-462b-985c-229b3c049d88"

@@ -1,5 +1,5 @@
 body {
-
+    background-image: url("monkahmm.png");
 }
 h1 {
 
@@ -8,6 +8,19 @@ h1 {
 .container {
     display:flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.leftside {
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+}
+.rightside {
+    display:flex;
+    justify-content: right;
     align-items: center;
     flex-direction: column;
 }
