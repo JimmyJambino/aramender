@@ -22,6 +22,12 @@
         <button id="btn-kekpaw">Kekpaw</button>
     </div>
 
+    <div>
+        <button id="btn-coords">GetCo</button>
+        <p>Coords:</p>
+        <p id="coords"></p>
+    </div>
+
     <div id="divBody" class="container" style="background-color: white">
         <!-- contains info about the summoner and cringe level
         "In the last 5 games, this summoner has participated in ending arams X times.-->
@@ -30,7 +36,12 @@
 <script src="options.js"></script>
 <script src="summonerInfo.js"></script>
 <script src="matchInfo.js"></script>
+<script src="makeCoords.js"></script>
 <script>
+    document.getElementById("btn-coords").onclick = (evt) => {
+        evt.preventDefault()
+        getCoords()
+    }
     document.getElementById("btn-rimfy").onclick = (evt) => {
         evt.preventDefault()
         let user = "SwLJX3PqTaWDMy_aETpmtqVQ2nmPbzZEu6CSWWeziSdQiiAV3LQDnd8x68ZNWlzx53LQVxQ91Z_jPA";
