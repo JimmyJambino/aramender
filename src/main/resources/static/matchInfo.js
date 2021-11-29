@@ -6,14 +6,14 @@ function fetchMatch(URL, playerId) {
         .then(match => {
             //const player = match.metadata.participants.filter(p => p == "tuVU3fSYF0SuHd86SMqS-m_P1EM8fDrxX4oIfZMpth57thGuKWYS8rd09qwys-nrfWW0ehMHoWYv6g")
             const ender = match.info.participants.filter(p => p.nexusKills == 1 || p.nexusTakedowns == 1)
+            const aram = match.info.gameMode == "ARAM";
             for(let i = 0; i < ender.length; i++) {
-                if(ender[i].puuid == playerId) {
+                if(ender[i].puuid == playerId && aram) {
                     counter++
                     console.log("counting")
                 }
             }
         })
-
 }
 
 function displayResults(playerName, count) {
@@ -31,19 +31,18 @@ function displayResults(playerName, count) {
     
 }
 
-function fetchOnePlayerMatches(URL, playerId, playerName) {
+function fetchOnePlayerMatches(URL, playerId, playerName, key) {
     fetch(URL)
         .then(res => res.json())
         .then(matches => {
             for(let i = 0; i < matches.length; i++) {
-                fetchMatch("https://europe.api.riotgames.com/lol/match/v5/matches/"+matches[i]+"?api_key=RGAPI-ce3d0077-253d-4057-8ac1-c4e1c3e3bf5e", playerId)
+                fetchMatch("https://europe.api.riotgames.com/lol/match/v5/matches/"+matches[i]+"?api_key="+key, playerId)
             }
         }).then(()=> {
             console.log("displaying")
         setTimeout(() =>{
             displayResults(playerName, counter)
         }, 500)
-
     })
 }
 
