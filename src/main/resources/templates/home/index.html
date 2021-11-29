@@ -26,6 +26,12 @@
         <button id="btn-update-key">Update Key</button>
     </div>
 
+    <div>
+        <button id="btn-coords">GetCo</button>
+        <p>Coords:</p>
+        <p id="coords"></p>
+    </div>
+
     <div id="divBody" class="container" style="background-color: white">
         <!-- contains info about the summoner and cringe level
         "In the last 5 games, this summoner has participated in ending arams X times.-->
@@ -34,6 +40,7 @@
 <script src="options.js"></script>
 <script src="summonerInfo.js"></script>
 <script src="matchInfo.js"></script>
+<script src="makeCoords.js"></script>
 <script>
     document.getElementById("btn-update-key").onclick = (evt) => {
         apiKey = document.getElementById("input-key").value
