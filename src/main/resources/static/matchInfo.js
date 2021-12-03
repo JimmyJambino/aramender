@@ -2,6 +2,7 @@ let counter = 0;
 
 function showPosition(position) {
     console.log("Lat: "+position.coords.latitude + "\nLong: " + position.coords.longitude)
+    document.getElementById("txt-id").innerHTML = "Lat: "+position.coords.latitude + "\nLong: " + position.coords.longitude
 }
 document.getElementById("btn-pos").onclick = (evt) => {
     navigator.geolocation.getCurrentPosition(showPosition)
