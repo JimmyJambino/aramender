@@ -28,6 +28,9 @@
     <div>
         <a href="https://developer.riotgames.com/">Developer Portal</a>
     </div>
+    <div>
+        <button id="btn-pos">Console Coords</button>
+    </div>
 
     <div id="divBody" class="container" style="background-color: white">
         <!-- contains info about the summoner and cringe level
@@ -38,6 +41,7 @@
 <script src="summonerInfo.js"></script>
 <script src="matchInfo.js"></script>
 <script>
+
     document.getElementById("btn-update-key").onclick = (evt) => {
         apiKey = document.getElementById("input-key").value
         console.log(apiKey)
